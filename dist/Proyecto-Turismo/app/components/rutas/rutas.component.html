@@ -1,0 +1,11 @@
+<div class="container">
+  <h3> Rutas de senderismo destacadas </h3>
+
+  <div class="list-group">  
+    <a class="list-group-item list-group-item-action"
+      *ngFor='let ruta of rutas'
+      routerLink="/ruta_detalle/{{ruta.id}}">
+        <b> {{ruta.nombre}}: </b> {{ruta.ubicacion}}
+    </a>
+  </div> 
+</div>

@@ -1,0 +1,23 @@
+.container{
+    background-color: #f5f7f6;
+    height: 790px;
+}
+
+h3{
+    color: #003049; 
+    text-align: center;
+    margin: 20px auto;   
+}
+
+.list-group{
+    margin: 20px auto;
+}
+
+a{
+    text-decoration: none;
+    color: #003049;
+}
+
+a:hover{
+    color: #669bbc;
+}

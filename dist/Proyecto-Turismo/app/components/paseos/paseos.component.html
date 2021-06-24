@@ -1,0 +1,109 @@
+<div class="container">
+  
+  <h2>Paseos</h2>
+
+  <!-- Mostramos lista de todos los paseos, pestaña 1 -->
+  <mat-tab-group>
+    <mat-tab label="Paseos">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action" *ngFor="let paseo of paseos">
+          <a href="{{paseo.web}}" target="_blank">
+            <b>{{paseo.id}} {{paseo.nombre}}: </b>
+          </a>
+          {{paseo.resumen}}
+        </li>
+      </ul>
+    </mat-tab>
+
+    <!-- buscamos/eliminamos/modificamos paseos un paseos, pestaña2 -->
+    <mat-tab label="Buscar un paseo">
+
+      <div class="login">
+        <div class="custom-form crear-paseo">
+          <h3>Buscar, modificar, eliminar</h3>
+
+          <div class="form-group"> 
+            <input type="text" [(ngModel)]="id" placeholder="ID del paseo"/>
+            <button (click)="buscar()">Buscar</button>
+      
+      
+            <div *ngIf="paseo != null">
+              <hr/>
+              <ul>
+                <li><b>Nombre:</b> {{paseo.nombre}}.</li>
+                <li><b>Precio</b> {{paseo.precio}} €/persona.</li>
+                <li><b>¿Dónde?</b> {{paseo.ubicacion}}.</li>
+                <li><b>Más info en:</b>  <a href="{{paseo.web}}" target="_blank"> {{paseo.web}}</a></li>
+              </ul>
+               
+              <hr/>
+  
+              <button (click)="borrar()">Eliminar</button>
+              <br/>
+              <button (click)="modificar()">Modificar</button>
+  
+              <div *ngIf="activarModificacion">
+                <form [formGroup]="paseoForm">
+                  <label>Nombre:</label> 
+                  <input type="text" formControlName="nombre"/> 
+                
+                  <label>Precio:</label> 
+                  <input type="numbre" formControlName="precio" /> 
+                
+                  <label>¿Dónde?:</label> 
+                  <input type="text" formControlName="ubicacion" /> 
+                
+                  <label>Resumen:</label> 
+                  <input type="text" formControlName="resumen" /> 
+                
+                  <label>Web:</label> 
+                  <input type="text" formControlName="web" /> 
+                
+                  <button (click)="guardar()">Guardar cambios</button>
+                </form>
+              </div>
+          </div>  
+        </div>
+      </div>
+      </div>
+    </mat-tab>
+
+    <!-- añadimos un nuevo paseo, pestaña3 -->
+    <mat-tab label="Agrega un paseo">
+      <div class="login" [formGroup]="paseoForm">
+
+        <div class="custom-form">
+
+          <h3>Agregar paseo</h3>
+          <input type="text" formControlName="nombre" placeholder="Nombre" ngModel required/>          
+          <div *ngIf="paseoForm.get('nombre').invalid" [ngStyle]="{ color: red }" >
+            <p>Longitud máxima de 20 caracteres</p>
+          </div>
+
+          <input type="text" formControlName="ubicacion" placeholder="¿Dónde?" ngModel required/>
+          <div *ngIf="paseoForm.get('ubicacion').invalid" [ngStyle]="{ color: red }">
+            <p>Longitud máxima de 20 caracteres</p>
+          </div>
+
+          <input type="number" formControlName="precio" placeholder="€/persona" title="Debe tener entre 1 o 3 números" ngModel required/>
+          <div *ngIf="paseoForm.get('precio').invalid" [ngStyle]="{ color: red }">
+            <p>Debe tener entre 1 o 3 números</p>
+          </div>
+
+          <input type="text" formControlName="resumen" placeholder="Descripción del paseo" ngModel required/>
+          <div *ngIf="paseoForm.get('resumen').invalid" [ngStyle]="{ color: red }">
+            <p>Longitud máxima de 100 caracteres</p>
+          </div>
+
+        
+          <input type="url" formControlName="web" placeholder="Web" ngModel required/>
+          <div *ngIf="paseoForm.get('web').invalid" [ngStyle]="{ color: red }">
+            <p>Debe tener formato web</p>
+          </div>
+
+          <button (click)="alta()">Crear paseo</button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

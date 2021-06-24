@@ -1,0 +1,36 @@
+.navbar{
+    width: 100%;
+    background-color: rgb(218, 30, 30);
+    border-radius: 2px;
+    box-shadow: 2px 2px 5px #999;
+    color: white;
+}
+
+.mat-icon-login{
+    margin-right: 40px;
+}
+
+.ng-container{
+    float: right; 
+    margin: px 20px;
+} 
+
+.link-menu{
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    line-height: 2.5;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    font-size: small;
+}
+
+.link-menu:hover,
+.mat-icon:hover, 
+.link:hover{
+    cursor: pointer;
+    color: #669bbc;
+}

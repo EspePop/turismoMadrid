@@ -1,0 +1,28 @@
+<div id="container">
+    <h3>Ubicación de la ruta seleccionada</h3> 
+    
+    <div class="row">
+        <div class="card col-lg-5 col-md-12 col-sm-11">
+            <div class="card-header">{{ruta.nombre}}</div>
+                <ul class="list-group">
+                    <li class="list-group-item"> 
+                        <b>¿Dónde?: </b>{{ruta.ubicacion}}
+                    </li>
+                    <li class="list-group-item"> 
+                        <b>Longitud: </b>{{ruta.coordenadas[0]}}
+                    </li>
+                    <li class="list-group-item"> 
+                        <b>Latitud: </b>{{ruta.coordenadas[1]}}
+                    </li>
+                </ul>
+            <button routerLink='/ruta_detalle/{{ruta.id}}'>Volver al Ruta</button>
+        </div>
+
+        <div class= "card col-lg-6 col-md-12 col-sm-11">
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+        </div>
+    </div>
+</div>
+

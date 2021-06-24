@@ -1,0 +1,26 @@
+<div id="container">
+    <h3>Detalle museo seleccionado</h3>
+    <div class="row">
+
+        <div class="card col-lg-5 col-md-12 col-sm-11">
+            <div class="card-header">
+                {{museo.nombre}}
+            </div>
+
+            <ul class="list-group">
+              <li class="list-group-item"><b>Precio:</b> {{museo.precio}} €</li>
+              <li class="list-group-item" *ngIf="museo.abierto"><b>Abierto</b> </li>
+              <li class="list-group-item" *ngIf="!museo.abierto"><b>Cerrado temporalmente</b></li>
+              <li class="list-group-item"><b>Web:</b> <a href="{{museo.web}}" target="_blank"> {{museo.web}}</a></li>
+              <li class="list-group-item"><b>Tfno:</b> {{museo.telefono}}</li>
+              <li class="list-group-item"><b>Resumen:</b> {{museo.resumen}}</li>
+            </ul> 
+             <!-- con los queryParams le indicamos qué info mandamos al componente ubicacion -->
+            <button routerLink='/ubicacion_museo' [queryParams]="{latitud: museo.coordenadas[0], longitud: museo.coordenadas[1], museo: museo.nombre, id:museo.id, direccion: museo.direccion}">Mostrar Ublicación</button>
+        </div>
+
+        <div class="card col-lg-6 col-md-12 col-sm-11">
+            <img src="{{museo.imagen}}" alt="interiorMuseo">   
+        </div>
+    </div>
+</div>

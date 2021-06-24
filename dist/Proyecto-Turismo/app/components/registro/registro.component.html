@@ -1,0 +1,44 @@
+<div class="login">
+
+  <div class="custom-form">    
+    
+    <h1 *ngIf="!registro">Login</h1>
+    <h1 *ngIf="registro">Alta de Usuario</h1>
+
+    <!-- Saber si estás registrado -->
+    <div *ngIf="logado">
+      <b >Estás dentro!</b> 
+      <p>Pero si te quieres marchar:</p>
+
+      <!-- para hacer logOut -->
+      <button (click)="logOut()">
+        <mat-icon> directions_run</mat-icon>
+      </button>      
+    </div>
+
+    <div class="form-group">
+      <input type="email" [(ngModel)]="email" placeholder="Email" />
+      <input type="password" [(ngModel)]="password" placeholder="Contraseña" />
+
+      <div class="confirm" *ngIf="registro">
+        <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirma Contraseña"/>
+      </div>
+
+      <br />
+      <button *ngIf="!registro" (click)="login()">Entrar en la cuenta</button>
+      <button *ngIf="registro" (click)="registrar()">Darte de alta</button>
+    </div>
+
+    <div>
+      <div *ngIf="!registro">
+        <p>Si no tienes cuenta...</p>
+        <button (click)="registro = true">regístrate aquí</button>
+      </div>
+      <div *ngIf="registro">
+        <p>¿Ya tienes cuenta?</p>
+        <button (click)="registro = false">Lógate aquí</button>
+      </div>
+    </div>
+    
+  </div>
+</div>

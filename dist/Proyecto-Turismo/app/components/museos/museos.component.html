@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>Museos destacados</h3>
+
+  <!-- Mostramos lista de todos los paseos -->
+  <div class="list-group">       
+    <a class="list-group-item list-group-item-action" 
+       *ngFor="let museo of museos" 
+       routerLink="/museo_detalle/{{ museo.id }}"> 
+      <b>{{ museo.nombre }}</b>:  {{museo.resumen}}
+    </a>  
+  </div>
+</div>
+
+
+
+ 
